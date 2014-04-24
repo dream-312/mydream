@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE weblogic-web-app PUBLIC "-//BEA Systems, Inc.//DTD Web Application 6.1//EN" "http://www.bea.com/servers/wls610/dtd/weblogic-web-jar.dtd">
+<wls:weblogic-web-app
+ xmlns:wls="http://www.bea.com/ns/weblogic/weblogic-web-app"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+ <wls:weblogic-version>10.3</wls:weblogic-version>
+ <wls:context-root>/</wls:context-root>
+ 
+ <wls:jsp-descriptor>
+ 	<!-- true在 JSP 编译过程中保存作为中间步骤生成的 Java 文件,否则编译完成后将删除所有中间 Java 文件 -->
+  	<wls:keepgenerated>true</wls:keepgenerated>
+  	<!--  <wls:working-dir>d:\downloads\</wls:working-dir>-->
+  	<!-- 设置 WebLogic Server 检查 JSP 文件的时间间隔（秒），以便查看 JSP 文件是否已更改以及是否需要重新编译。如果已发生更改，还会检查依赖关系并递归重新加载。 
+				值 -1 表示永不检查页面。该值为生产环境中的默认值。 
+				值 0 表示总是检查页面。 
+				值 1 表示每秒检查一次页面。该值为开发环境中的默认值。 
+				在生产环境下，很少发生 JSP 更改，可考虑根据您的调整要求将 pageCheckSeconds 的值更改为 60 或更大。-->
+  	<wls:page-check-seconds>10</wls:page-check-seconds> 
+  	<!-- true在weblogic服务器启动时自动编译所有的jsp。-->
+    <wls:precompile>true</wls:precompile>   
+    <wls:encoding>UTF-8</wls:encoding>   
+ </wls:jsp-descriptor>
+ 
+
+<wls:container-descriptor>
+	<!-- 当Weblogic Web Application的WEB-INF目录下的包与系统CLASSPATH所设定的第三方包发生重名冲突的时候， 缺省情况下 Weblogic
+	会优先使用CLASSPATH下的那个包。但实际上，很多时候我们希望Weblogic优先使用自己的WEB-INF目录下的类，这种情况下就需要对weblogic做相应的设置修改。 -->
+	<wls:prefer-web-inf-classes>true</wls:prefer-web-inf-classes>
+	<!--WebLogic Server 是否执行 servlet 检查以查看 servlet 是否已更改，如果已更改，是否重新加载。
+	-1 表示永不检查 servlet。该值为生产环境中的默认值, 0 表示总是检查 servlet, 1 表示每秒检查一次 servlet。该值为开发环境中的默认值。-->
+	<wls:servlet-reload-check-secs>-1</wls:servlet-reload-check-secs>  
+</wls:container-descriptor> 
+
+</wls:weblogic-web-app>
